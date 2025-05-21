@@ -1,4 +1,5 @@
-
+# Updated HTML content with new Google Form link including entry.841042627
+html_content_v3 = """
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -108,18 +109,15 @@
       <img src="馬哥小麵攤.png" class="menu-image" alt="菜單圖片" />
 
       <label for="qty1">炒泡麵(沙茶) 數量</label>
-      <input type="number" id="qty1" min="0" value="0" />
+      <input type="number" id="qty1" min="0" value="0" name="entry.1620324262" />
 
       <label for="qty2">炒泡麵(維力炸醬) 數量</label>
-      <input type="number" id="qty2" min="0" value="0" />
+      <input type="number" id="qty2" min="0" value="0" name="entry.841042627" />
 
       <div class="price-box" id="priceBox">
         備註：(加蛋+飲料)$60/份<br />
         總價：$0
       </div>
-
-      <!-- 隱藏送出的總數欄位 -->
-      <input type="hidden" name="entry.1620324262" id="totalHidden" value="0" />
 
       <button type="submit">送出預購單</button>
     </form>
@@ -136,7 +134,6 @@
         備註：(加蛋+飲料)$60/份<br />
         計算：${qty1} 份(沙茶) + ${qty2} 份(維力炸醬) = ${totalQty} 份 x 60 元 = <strong>$${totalPrice}</strong>
       `;
-      document.getElementById("totalHidden").value = totalQty;
       return true;
     }
 
@@ -145,3 +142,17 @@
   </script>
 </body>
 </html>
+"""
+
+# Save new HTML version
+html_path_v3 = "/mnt/data/index.html"
+Path(html_path_v3).write_text(html_content_v3, encoding='utf-8')
+
+# Create new zip with updated form action
+zip_path_v3 = "/mnt/data/馬哥小麵攤_最新版本.zip"
+with ZipFile(zip_path_v3, 'w') as zipf:
+    zipf.write(html_path_v3, arcname="index.html")
+    zipf.write("/mnt/data/馬哥小麵攤_更新2.png", arcname="馬哥小麵攤.png")
+    zipf.write("/mnt/data/背景圖_更新2.png", arcname="未命名的设计 (2).png")
+
+zip_path_v3
