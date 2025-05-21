@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PU103 馬哥小麵攤預購單</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('未命名的设计 (2).png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      padding: 20px;
+      color: #333;
+    }
+    .form-container {
+      max-width: 500px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      color: #1a8a34;
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 6px 10px;
+      margin-top: 4px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    .menu-image {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+      border-radius: 12px;
+    }
+    .price-box {
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #f0f9f0;
+      border: 1px dashed #1a8a34;
+      border-radius: 8px;
+    }
+    button {
+      margin-top: 20px;
+      background-color: #1a8a34;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #15692a;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>PU103 馬哥小麵攤預購單</h1>
+
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSfrI6BLZsVXZMW51FYCmCQLY_K1IVNIGR8sLtACK3HzG2Hh5Q/formResponse" method="POST" target="_blank" onsubmit="return showTotal();">
+
+      <label for="name">老師/負責人的姓名</label>
+      <input type="text" name="entry.966395879" required />
+
+      <label for="phone">老師/負責人電話</label>
+      <input type="tel" name="entry.1586944622" required />
+
+      <label for="class">班級</label>
+      <select name="entry.153684885" required>
+        <option value="">請選擇班級</option>
+        <option>國101</option><option>國102</option><option>國103</option>
+        <option>國104</option><option>國105</option><option>國106</option>
+        <option>國107</option><option>國108</option><option>國109</option>
+        <option>國110</option><option>國111</option>
+        <option>國201</option><option>國202</option><option>國203</option>
+        <option>國204</option><option>國205</option><option>國206</option>
+        <option>國207</option><option>國208</option><option>國209</option>
+        <option>國210</option><option>國211</option>
+        <option>普101</option><option>普102</option><option>普103</option>
+        <option>普104</option><option>普105</option>
+        <option>機電101</option><option>機電102</option>
+        <option>應英101</option><option>多媒101</option><option>資訊101</option>
+        <option>普201</option><option>普202</option><option>普203</option>
+        <option>普204</option><option>普205</option>
+        <option>機電201</option><option>機電202</option>
+        <option>應英201</option><option>多媒201</option><option>資訊201</option>
+      </select>
+
+      <img src="馬哥小麵攤.png" class="menu-image" alt="菜單圖片" />
+
+      <label for="qty">炒泡麵（加蛋+飲料）$60/份 - 請填寫數量</label>
+      <input type="number" name="entry.1620324262" min="0" id="qty" required />
+
+      <div class="price-box" id="priceBox">
+        總價：$0
+      </div>
+
+      <button type="submit">送出預購單</button>
+    </form>
+  </div>
+
+  <script>
+    function showTotal() {
+      const qty = parseInt(document.getElementById("qty").value) || 0;
+      const total = qty * 60;
+      const box = document.getElementById("priceBox");
+      box.innerHTML = `計算：${qty} 份 x 60 元 = <strong>$${total}</strong>`;
+      return true;
+    }
+
+    document.getElementById("qty").addEventListener("input", showTotal);
+  </script>
+</body>
+</html>
