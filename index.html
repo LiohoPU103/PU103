@@ -1,5 +1,4 @@
-# Updated HTML content with new Google Form link including entry.841042627
-html_content_v3 = """
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -142,17 +141,3 @@ html_content_v3 = """
   </script>
 </body>
 </html>
-"""
-
-# Save new HTML version
-html_path_v3 = "/mnt/data/index.html"
-Path(html_path_v3).write_text(html_content_v3, encoding='utf-8')
-
-# Create new zip with updated form action
-zip_path_v3 = "/mnt/data/馬哥小麵攤_最新版本.zip"
-with ZipFile(zip_path_v3, 'w') as zipf:
-    zipf.write(html_path_v3, arcname="index.html")
-    zipf.write("/mnt/data/馬哥小麵攤_更新2.png", arcname="馬哥小麵攤.png")
-    zipf.write("/mnt/data/背景圖_更新2.png", arcname="未命名的设计 (2).png")
-
-zip_path_v3
